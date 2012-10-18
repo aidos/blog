@@ -1,53 +1,35 @@
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
-    xml:lang="{% firstof LANGUAGE_CODE 'en' %}"
-    lang="{% firstof LANGUAGE_CODE 'en' %}">
-  <head>
-    <title>{% block title %}{% endblock %} - Nonrel-testapp</title>
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <title>{% block title %}Aidan's Blog{% endblock %}</title>
+  <link href="{{ STATIC_URL }}style.css" media="screen" rel="stylesheet" type="text/css" />
+  <meta name="author" content="Aidan Kane">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css' />
+</head>
 
-    {% block css %}
-    {% endblock %}
+<body class="posts index">
+  <header>
+    <h1><a href="http://aidankane-blog.appspot.com">Aidan's Blog</a></h1>
+    <span>Hacked together from various things.</span>
+    <ul>
+      <li><a href="http://twitter.com/aidos">@aidos</a></li>
+      <li><a href="https://github.com/aidos">github</a></li>
+      <li><a href="mailto:aidankane@gmail.com?subject:Hi!">say hi</a></li>
+    </ul>
+    <span class="powered-by">
+      Style Taken from <a href="http://github.com/natew/obtvse.git">Obtvse</a>
+    </span>
+  </header>
 
-    {% block preload_js %}
-    {% endblock %}
+  <div id="container">
+    <time>{{ now|date:"F j, Y" }}</time>
+    <div id="content">
 
-    {% block extra-head %}{% endblock %}
-  </head>
-
-  <body>
-    <div id="header">
-      <a id="logo" href="/">Nonrel-testapp</a>
+      {% block content %}{% endblock %}
+      
     </div>
+  </div>
 
-    <div class="columns">
-      <div id="content" class="column">
-        {% block content-header %}
-          {% if error %}<div class="error">{{ error }}</div>{% endif %}
-          {% if info %}<div class="info">{{ info }}</div>{% endif %}
-          {% if messages %}
-            {% for message in messages %}
-              <div class="info">{{ message }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endblock %}
-
-        {% block content %}{% endblock %}
-      </div>
-
-      <div id="sidebar" class="column">
-        {% block sidebar %}
-        {% endblock %}
-      </div>
-    </div>
-
-    <div id="footer">
-      <p>Powered by <a href="https://github.com/django-nonrel">Django-nonrel</a></p>
-    </div>
-
-    {% block js %}
-    {% endblock %}
-  </body>
+</body>
 </html>
+

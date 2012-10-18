@@ -1,7 +1,7 @@
 from django.contrib import admin
-from models import Entry
+from models import Article
 
-class EntryAdmin(admin.ModelAdmin):
+class ArticleAdmin(admin.ModelAdmin):
     pass
-admin.site.register(Entry, EntryAdmin)
+admin.site.register(Article, ArticleAdmin)
 
